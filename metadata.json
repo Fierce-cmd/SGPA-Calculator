@@ -1,0 +1,5 @@
+{
+  "name": "Expected SGPA Calculator",
+  "description": "Calculate Expected SGPA by entering marks, attendance, and file submission based on customizable rules.",
+  "requestFramePermissions": []
+}
