@@ -185,7 +185,7 @@ export default function App() {
   const tabs = ["Calculator", "Results", "Grade Rules", "Admin"];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 font-sans text-gray-900 dark:text-gray-100 selection:bg-indigo-100 dark:selection:bg-indigo-900 selection:text-indigo-900 dark:selection:text-indigo-100 transition-colors">
+    <div className="min-h-screen bg-gray-50 dark:bg-zinc-950 font-sans text-gray-900 dark:text-gray-100 selection:bg-black/10 dark:selection:bg-white/20 selection:text-black dark:selection:text-white transition-colors">
       <Header onSave={handleSave} onLoad={handleLoad} onReset={handleReset} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

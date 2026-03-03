@@ -35,11 +35,11 @@ export function Calculator({ subjects, marks, onChange, onSubjectChange }: Calcu
         return (
           <div
             key={subject.id}
-            className="bg-white dark:bg-black rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden transition-colors"
+            className="bg-white dark:bg-black rounded-2xl shadow-sm border border-gray-200/80 dark:border-zinc-800/80 overflow-hidden transition-all duration-200 hover:shadow-md"
           >
             <div
-              className={`px-6 py-4 border-b border-gray-200 dark:border-gray-800 flex justify-between items-center ${
-                subject.type === "Theory" ? "bg-blue-50/50 dark:bg-blue-900/10" : "bg-purple-50/50 dark:bg-purple-900/10"
+              className={`px-6 py-5 border-b border-gray-100 dark:border-zinc-800/50 flex justify-between items-center ${
+                subject.type === "Theory" ? "bg-gradient-to-r from-blue-50/50 to-transparent dark:from-blue-900/10 dark:to-transparent" : "bg-gradient-to-r from-purple-50/50 to-transparent dark:from-purple-900/10 dark:to-transparent"
               }`}
             >
               <div className="flex items-center gap-3">
@@ -85,70 +85,70 @@ export function Calculator({ subjects, marks, onChange, onSubjectChange }: Calcu
               {subject.type === "Theory" ? (
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      End-Sem Marks (out of 70)
-                    </label>
-                    <input
-                      type="number"
-                      min="0"
-                      max="70"
-                      value={subjectMarks.endSem}
-                      onChange={(e) => {
-                        let val =
-                          e.target.value === "" ? "" : Number(e.target.value);
-                        if (typeof val === "number" && val > 70) val = 70;
-                        onChange(subject.id, "endSem", val);
-                      }}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-100 rounded-lg shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white sm:text-sm transition-colors"
-                      placeholder="0-70"
-                    />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        End-Sem Marks <span className="text-gray-400 font-normal">(out of 70)</span>
+                      </label>
+                      <input
+                        type="number"
+                        min="0"
+                        max="70"
+                        value={subjectMarks.endSem}
+                        onChange={(e) => {
+                          let val =
+                            e.target.value === "" ? "" : Number(e.target.value);
+                          if (typeof val === "number" && val > 70) val = 70;
+                          onChange(subject.id, "endSem", val);
+                        }}
+                        className="w-full px-4 py-2.5 border border-gray-200 dark:border-zinc-800 bg-gray-50/50 dark:bg-zinc-900/50 text-gray-900 dark:text-gray-100 rounded-xl shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white focus:bg-white dark:focus:bg-black sm:text-sm transition-all duration-200"
+                        placeholder="0-70"
+                      />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      Mid-Sem Marks (out of 20)
-                    </label>
-                    <input
-                      type="number"
-                      min="0"
-                      max="20"
-                      value={subjectMarks.midSem}
-                      onChange={(e) => {
-                        let val =
-                          e.target.value === "" ? "" : Number(e.target.value);
-                        if (typeof val === "number" && val > 20) val = 20;
-                        onChange(subject.id, "midSem", val);
-                      }}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors"
-                      placeholder="0-20"
-                    />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        Mid-Sem Marks <span className="text-gray-400 font-normal">(out of 20)</span>
+                      </label>
+                      <input
+                        type="number"
+                        min="0"
+                        max="20"
+                        value={subjectMarks.midSem}
+                        onChange={(e) => {
+                          let val =
+                            e.target.value === "" ? "" : Number(e.target.value);
+                          if (typeof val === "number" && val > 20) val = 20;
+                          onChange(subject.id, "midSem", val);
+                        }}
+                        className="w-full px-4 py-2.5 border border-gray-200 dark:border-zinc-800 bg-gray-50/50 dark:bg-zinc-900/50 text-gray-900 dark:text-gray-100 rounded-xl shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white focus:bg-white dark:focus:bg-black sm:text-sm transition-all duration-200"
+                        placeholder="0-20"
+                      />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 flex justify-between">
-                      <span>Attendance %</span>
-                      {subjectMarks.attendance !== "" && (
-                        <span
-                          className={`text-xs font-semibold ${Number(subjectMarks.attendance) >= 75 ? "text-emerald-600 dark:text-emerald-400" : "text-red-600 dark:text-red-400"}`}
-                        >
-                          {Number(subjectMarks.attendance) >= 75
-                            ? "+10 Marks"
-                            : "+0 Marks"}
-                        </span>
-                      )}
-                    </label>
-                    <input
-                      type="number"
-                      min="0"
-                      max="100"
-                      value={subjectMarks.attendance}
-                      onChange={(e) => {
-                        let val =
-                          e.target.value === "" ? "" : Number(e.target.value);
-                        if (typeof val === "number" && val > 100) val = 100;
-                        onChange(subject.id, "attendance", val);
-                      }}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors"
-                      placeholder="0-100"
-                    />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 flex justify-between items-center">
+                        <span>Attendance <span className="text-gray-400 font-normal">(%)</span></span>
+                        {subjectMarks.attendance !== "" && (
+                          <span
+                            className={`text-xs font-semibold px-2 py-0.5 rounded-full ${Number(subjectMarks.attendance) >= 75 ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400" : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"}`}
+                          >
+                            {Number(subjectMarks.attendance) >= 75
+                              ? "+10 Marks"
+                              : "+0 Marks"}
+                          </span>
+                        )}
+                      </label>
+                      <input
+                        type="number"
+                        min="0"
+                        max="100"
+                        value={subjectMarks.attendance}
+                        onChange={(e) => {
+                          let val =
+                            e.target.value === "" ? "" : Number(e.target.value);
+                          if (typeof val === "number" && val > 100) val = 100;
+                          onChange(subject.id, "attendance", val);
+                        }}
+                        className="w-full px-4 py-2.5 border border-gray-200 dark:border-zinc-800 bg-gray-50/50 dark:bg-zinc-900/50 text-gray-900 dark:text-gray-100 rounded-xl shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white focus:bg-white dark:focus:bg-black sm:text-sm transition-all duration-200"
+                        placeholder="0-100"
+                      />
                     <p className="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
                       ≥ 75% gives 10 marks, else 0.
                     </p>
@@ -157,38 +157,38 @@ export function Calculator({ subjects, marks, onChange, onSubjectChange }: Calcu
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 flex justify-between">
-                      <span>Attendance %</span>
-                      {subjectMarks.attendance !== "" && (
-                        <span
-                          className={`text-xs font-semibold ${Number(subjectMarks.attendance) >= 75 ? "text-emerald-600 dark:text-emerald-400" : "text-amber-600 dark:text-amber-400"}`}
-                        >
-                          {Number(subjectMarks.attendance) >= 75
-                            ? "Base: A+"
-                            : "Base: A"}
-                        </span>
-                      )}
-                    </label>
-                    <input
-                      type="number"
-                      min="0"
-                      max="100"
-                      value={subjectMarks.attendance}
-                      onChange={(e) => {
-                        let val =
-                          e.target.value === "" ? "" : Number(e.target.value);
-                        if (typeof val === "number" && val > 100) val = 100;
-                        onChange(subject.id, "attendance", val);
-                      }}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors"
-                      placeholder="0-100"
-                    />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 flex justify-between items-center">
+                        <span>Attendance <span className="text-gray-400 font-normal">(%)</span></span>
+                        {subjectMarks.attendance !== "" && (
+                          <span
+                            className={`text-xs font-semibold px-2 py-0.5 rounded-full ${Number(subjectMarks.attendance) >= 75 ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400" : "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"}`}
+                          >
+                            {Number(subjectMarks.attendance) >= 75
+                              ? "Base: A+"
+                              : "Base: A"}
+                          </span>
+                        )}
+                      </label>
+                      <input
+                        type="number"
+                        min="0"
+                        max="100"
+                        value={subjectMarks.attendance}
+                        onChange={(e) => {
+                          let val =
+                            e.target.value === "" ? "" : Number(e.target.value);
+                          if (typeof val === "number" && val > 100) val = 100;
+                          onChange(subject.id, "attendance", val);
+                        }}
+                        className="w-full px-4 py-2.5 border border-gray-200 dark:border-zinc-800 bg-gray-50/50 dark:bg-zinc-900/50 text-gray-900 dark:text-gray-100 rounded-xl shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white focus:bg-white dark:focus:bg-black sm:text-sm transition-all duration-200"
+                        placeholder="0-100"
+                      />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       File Submitted
                     </label>
-                    <div className="flex items-center mt-2">
+                    <div className="flex items-center mt-3">
                       <button
                         type="button"
                         onClick={() =>

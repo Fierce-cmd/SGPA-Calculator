@@ -88,8 +88,8 @@ export function GradeRulesPanel({ rules, onChange, curriculumMap, onCurriculumCh
 
   return (
     <div className="space-y-6">
-      <div className="bg-white dark:bg-black rounded-xl shadow-sm border border-gray-200 dark:border-zinc-800 overflow-hidden transition-colors">
-        <div className="px-6 py-5 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black/50">
+      <div className="bg-white dark:bg-black rounded-2xl shadow-sm border border-gray-200/80 dark:border-zinc-800/80 overflow-hidden transition-all duration-200 hover:shadow-md">
+        <div className="px-6 py-5 border-b border-gray-100 dark:border-zinc-800/50 bg-gray-50/50 dark:bg-zinc-900/10">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Grade Rules</h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Customize grade labels, points, and marks ranges for theory subjects.
@@ -106,7 +106,7 @@ export function GradeRulesPanel({ rules, onChange, curriculumMap, onCurriculumCh
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-gray-50 dark:bg-zinc-900/50 border-b border-gray-200 dark:border-gray-800 text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">
+              <tr className="bg-gray-50/80 dark:bg-zinc-900/30 border-b border-gray-100 dark:border-zinc-800/50 text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">
                 <th className="px-6 py-3">Grade Label</th>
                 <th className="px-6 py-3">Grade Points</th>
                 <th className="px-6 py-3">Min Marks</th>
@@ -123,7 +123,7 @@ export function GradeRulesPanel({ rules, onChange, curriculumMap, onCurriculumCh
                       onChange={(e) =>
                         handleRuleChange(rule.id, "label", e.target.value)
                       }
-                      className="w-full px-3 py-1.5 border border-gray-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white sm:text-sm transition-colors"
+                      className="w-full px-3 py-1.5 border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-100 rounded-lg shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white sm:text-sm transition-colors"
                     />
                   </td>
                   <td className="px-6 py-3">
@@ -139,7 +139,7 @@ export function GradeRulesPanel({ rules, onChange, curriculumMap, onCurriculumCh
                           Number(e.target.value),
                         )
                       }
-                      className="w-full px-3 py-1.5 border border-gray-300 dark:border-zinc-800 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors"
+                      className="w-full px-3 py-1.5 border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-100 rounded-lg shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white sm:text-sm transition-colors"
                     />
                   </td>
                   <td className="px-6 py-3">
@@ -155,7 +155,7 @@ export function GradeRulesPanel({ rules, onChange, curriculumMap, onCurriculumCh
                           Number(e.target.value),
                         )
                       }
-                      className="w-full px-3 py-1.5 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors"
+                      className="w-full px-3 py-1.5 border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-100 rounded-lg shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white sm:text-sm transition-colors"
                     />
                   </td>
                   <td className="px-6 py-3">
@@ -171,7 +171,7 @@ export function GradeRulesPanel({ rules, onChange, curriculumMap, onCurriculumCh
                           Number(e.target.value),
                         )
                       }
-                      className="w-full px-3 py-1.5 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors"
+                      className="w-full px-3 py-1.5 border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-100 rounded-lg shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white sm:text-sm transition-colors"
                     />
                   </td>
                 </tr>
@@ -182,10 +182,10 @@ export function GradeRulesPanel({ rules, onChange, curriculumMap, onCurriculumCh
       </div>
 
       {/* Curriculum Editor */}
-      <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden transition-colors">
+      <div className="bg-white dark:bg-black rounded-2xl shadow-sm border border-gray-200/80 dark:border-zinc-800/80 overflow-hidden transition-all duration-200 hover:shadow-md">
         <button
           onClick={() => setIsEditorOpen(!isEditorOpen)}
-          className="w-full px-6 py-4 flex justify-between items-center bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none"
+          className="w-full px-6 py-5 flex justify-between items-center bg-gray-50/50 dark:bg-zinc-900/10 hover:bg-gray-100/50 dark:hover:bg-zinc-800/30 transition-colors focus:outline-none"
         >
           <div className="text-left">
             <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Curriculum Editor</h2>
@@ -201,9 +201,9 @@ export function GradeRulesPanel({ rules, onChange, curriculumMap, onCurriculumCh
         </button>
 
         {isEditorOpen && (
-          <div className="p-6 border-t border-gray-200 dark:border-gray-800">
+          <div className="p-6 border-t border-gray-100 dark:border-zinc-800/50">
             {jsonError && (
-              <div className="mb-4 px-4 py-3 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-md flex items-center gap-2 text-sm text-red-600 dark:text-red-400">
+              <div className="mb-4 px-4 py-3 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-xl flex items-center gap-2 text-sm text-red-600 dark:text-red-400">
                 <AlertCircle className="w-4 h-4" />
                 Invalid JSON: {jsonError}
               </div>
@@ -211,19 +211,19 @@ export function GradeRulesPanel({ rules, onChange, curriculumMap, onCurriculumCh
             <textarea
               value={jsonText}
               onChange={(e) => setJsonText(e.target.value)}
-              className="w-full h-64 p-4 font-mono text-sm border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-black text-gray-900 dark:text-gray-100 rounded-lg shadow-inner focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+              className="w-full h-64 p-4 font-mono text-sm border border-gray-200 dark:border-zinc-800 bg-gray-50/50 dark:bg-zinc-900/50 text-gray-900 dark:text-gray-100 rounded-xl shadow-inner focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white transition-colors"
               spellCheck="false"
             />
             <div className="mt-4 flex gap-3">
               <button
                 onClick={handleValidateJson}
-                className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
+                className="px-4 py-2.5 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black dark:focus:ring-white transition-all duration-200"
               >
                 Validate JSON
               </button>
               <button
                 onClick={handleSaveCurriculum}
-                className="px-4 py-2 bg-black dark:bg-white text-white dark:text-black rounded-md shadow-sm text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
+                className="px-4 py-2.5 bg-black dark:bg-white text-white dark:text-black rounded-xl shadow-sm text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black dark:focus:ring-white transition-all duration-200"
               >
                 Save Curriculum
               </button>

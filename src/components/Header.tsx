@@ -14,13 +14,9 @@ export function Header({ onSave, onLoad, onReset, isDarkMode, toggleDarkMode }: 
     <header className="bg-white dark:bg-black shadow-sm border-b border-gray-200 dark:border-zinc-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white dark:text-black tracking-tight">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
             Expected SGPA Calculator
           </h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-            Calculate SGPA using Theory (70+20+10) and Practical (attendance +
-            file submission) rules
-          </p>
         </div>
         <div className="flex items-center gap-2">
           <button

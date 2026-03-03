@@ -88,10 +88,10 @@ export function SubjectManager({ subjects, onChange }: SubjectManagerProps) {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white dark:bg-black rounded-xl shadow-sm border border-gray-200 dark:border-zinc-800 overflow-hidden transition-colors">
-        <div className="px-6 py-5 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black/50 flex justify-between items-center">
+      <div className="bg-white dark:bg-black rounded-2xl shadow-sm border border-gray-200/80 dark:border-zinc-800/80 overflow-hidden transition-all duration-200 hover:shadow-md">
+        <div className="px-6 py-5 border-b border-gray-100 dark:border-zinc-800/50 bg-gray-50/50 dark:bg-zinc-900/10 flex justify-between items-center">
           <div>
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 tracking-tight">
               Add New Subject
             </h2>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
@@ -101,8 +101,8 @@ export function SubjectManager({ subjects, onChange }: SubjectManagerProps) {
         </div>
         <div className="p-6 grid grid-cols-1 sm:grid-cols-5 gap-4 items-end">
           <div className="sm:col-span-1">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Code (Opt)
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Code <span className="text-gray-400 font-normal">(Opt)</span>
             </label>
             <input
               type="text"
@@ -111,11 +111,11 @@ export function SubjectManager({ subjects, onChange }: SubjectManagerProps) {
                 setNewSubject({ ...newSubject, code: e.target.value })
               }
               placeholder="e.g. BT201"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white sm:text-sm transition-colors"
+              className="w-full px-4 py-2.5 border border-gray-200 dark:border-zinc-800 bg-gray-50/50 dark:bg-zinc-900/50 text-gray-900 dark:text-gray-100 rounded-xl shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white focus:bg-white dark:focus:bg-black sm:text-sm transition-all duration-200"
             />
           </div>
           <div className="sm:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Name
             </label>
             <input
@@ -125,11 +125,11 @@ export function SubjectManager({ subjects, onChange }: SubjectManagerProps) {
                 setNewSubject({ ...newSubject, name: e.target.value })
               }
               placeholder="e.g. Physics"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors"
+              className="w-full px-4 py-2.5 border border-gray-200 dark:border-zinc-800 bg-gray-50/50 dark:bg-zinc-900/50 text-gray-900 dark:text-gray-100 rounded-xl shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white focus:bg-white dark:focus:bg-black sm:text-sm transition-all duration-200"
             />
           </div>
           <div className="sm:col-span-1">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Type
             </label>
             <select
@@ -140,14 +140,14 @@ export function SubjectManager({ subjects, onChange }: SubjectManagerProps) {
                   type: e.target.value as SubjectType,
                 })
               }
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors"
+              className="w-full px-4 py-2.5 border border-gray-200 dark:border-zinc-800 bg-gray-50/50 dark:bg-zinc-900/50 text-gray-900 dark:text-gray-100 rounded-xl shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white focus:bg-white dark:focus:bg-black sm:text-sm transition-all duration-200"
             >
               <option value="Theory">Theory</option>
               <option value="Practical">Practical</option>
             </select>
           </div>
           <div className="sm:col-span-1">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Credits
             </label>
             <div className="flex gap-2">
@@ -162,12 +162,12 @@ export function SubjectManager({ subjects, onChange }: SubjectManagerProps) {
                     credits: Number(e.target.value),
                   })
                 }
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors"
+                className="w-full px-4 py-2.5 border border-gray-200 dark:border-zinc-800 bg-gray-50/50 dark:bg-zinc-900/50 text-gray-900 dark:text-gray-100 rounded-xl shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white focus:bg-white dark:focus:bg-black sm:text-sm transition-all duration-200"
               />
               <button
                 onClick={handleAdd}
                 disabled={!newSubject.name || !newSubject.credits}
-                className="flex items-center justify-center p-2 bg-black dark:bg-white text-white dark:text-black rounded-md hover:bg-gray-800 dark:hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="flex items-center justify-center p-2.5 bg-black dark:bg-white text-white dark:text-black rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
               >
                 <Plus className="w-5 h-5" />
               </button>
@@ -176,13 +176,13 @@ export function SubjectManager({ subjects, onChange }: SubjectManagerProps) {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden transition-colors">
-        <div className="px-6 py-5 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+      <div className="bg-white dark:bg-black rounded-2xl shadow-sm border border-gray-200/80 dark:border-zinc-800/80 overflow-hidden transition-all duration-200 hover:shadow-md">
+        <div className="px-6 py-5 border-b border-gray-100 dark:border-zinc-800/50 bg-gray-50/50 dark:bg-zinc-900/10">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 tracking-tight">
             Current Subjects
           </h2>
         </div>
-        <div className="divide-y divide-gray-200 dark:divide-zinc-800">
+        <div className="divide-y divide-gray-100 dark:divide-zinc-800/50">
           {subjects.length === 0 ? (
             <div className="p-6 text-center text-gray-500 dark:text-gray-400">
               No subjects added yet.
@@ -191,7 +191,7 @@ export function SubjectManager({ subjects, onChange }: SubjectManagerProps) {
             subjects.map((subject, index) => (
               <div
                 key={subject.id}
-                className="p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-zinc-900/50 transition-colors group"
+                className="p-4 flex items-center justify-between hover:bg-gray-50/50 dark:hover:bg-zinc-900/30 transition-colors group"
               >
                 <div className="flex items-center gap-4">
                   <div className="flex flex-col text-gray-400 dark:text-gray-500">

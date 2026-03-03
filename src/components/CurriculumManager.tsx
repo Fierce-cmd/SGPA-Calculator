@@ -126,8 +126,8 @@ export function CurriculumManager({ curriculumMap, onChange }: CurriculumManager
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Branches */}
-        <div className="bg-white dark:bg-black rounded-xl shadow-sm border border-gray-200 dark:border-zinc-800 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Branches</h3>
+        <div className="bg-white dark:bg-black rounded-2xl shadow-sm border border-gray-200/80 dark:border-zinc-800/80 p-6 transition-all duration-200 hover:shadow-md">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 tracking-tight">Branches</h3>
           
           <div className="flex gap-2 mb-4">
             <input
@@ -135,12 +135,12 @@ export function CurriculumManager({ curriculumMap, onChange }: CurriculumManager
               value={newBranch}
               onChange={(e) => setNewBranch(e.target.value)}
               placeholder="New Branch (e.g. CSE)"
-              className="flex-1 px-3 py-2 border border-gray-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white sm:text-sm"
+              className="flex-1 px-4 py-2.5 border border-gray-200 dark:border-zinc-800 bg-gray-50/50 dark:bg-zinc-900/50 text-gray-900 dark:text-gray-100 rounded-xl shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white focus:bg-white dark:focus:bg-black sm:text-sm transition-all duration-200"
             />
             <button
               onClick={handleAddBranch}
               disabled={!newBranch.trim()}
-              className="p-2 bg-black dark:bg-white text-white dark:text-black rounded-md disabled:opacity-50"
+              className="p-2.5 bg-black dark:bg-white text-white dark:text-black rounded-xl disabled:opacity-50 transition-all duration-200 hover:bg-gray-800 dark:hover:bg-gray-200"
             >
               <Plus className="w-5 h-5" />
             </button>
@@ -150,10 +150,10 @@ export function CurriculumManager({ curriculumMap, onChange }: CurriculumManager
             {branches.map(branch => (
               <div
                 key={branch}
-                className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-colors ${
+                className={`flex items-center justify-between p-3.5 rounded-xl border cursor-pointer transition-all duration-200 ${
                   selectedBranch === branch
-                    ? "border-black dark:border-white bg-gray-50 dark:bg-zinc-900"
-                    : "border-gray-200 dark:border-zinc-800 hover:border-gray-300 dark:hover:border-zinc-700"
+                    ? "border-black dark:border-white bg-gray-50 dark:bg-zinc-900/50 shadow-sm"
+                    : "border-gray-200 dark:border-zinc-800 hover:border-gray-300 dark:hover:border-zinc-700 hover:bg-gray-50/50 dark:hover:bg-zinc-900/30"
                 }`}
                 onClick={() => {
                   if (editingBranch !== branch) {
@@ -213,8 +213,8 @@ export function CurriculumManager({ curriculumMap, onChange }: CurriculumManager
         </div>
 
         {/* Semesters */}
-        <div className={`bg-white dark:bg-black rounded-xl shadow-sm border border-gray-200 dark:border-zinc-800 p-6 ${!selectedBranch ? 'opacity-50 pointer-events-none' : ''}`}>
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <div className={`bg-white dark:bg-black rounded-2xl shadow-sm border border-gray-200/80 dark:border-zinc-800/80 p-6 transition-all duration-200 hover:shadow-md ${!selectedBranch ? 'opacity-50 pointer-events-none' : ''}`}>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 tracking-tight">
             Semesters {selectedBranch && `for ${selectedBranch}`}
           </h3>
           
@@ -224,12 +224,12 @@ export function CurriculumManager({ curriculumMap, onChange }: CurriculumManager
               value={newSemester}
               onChange={(e) => setNewSemester(e.target.value)}
               placeholder="New Semester (e.g. 1)"
-              className="flex-1 px-3 py-2 border border-gray-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white sm:text-sm"
+              className="flex-1 px-4 py-2.5 border border-gray-200 dark:border-zinc-800 bg-gray-50/50 dark:bg-zinc-900/50 text-gray-900 dark:text-gray-100 rounded-xl shadow-sm focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white focus:bg-white dark:focus:bg-black sm:text-sm transition-all duration-200"
             />
             <button
               onClick={handleAddSemester}
               disabled={!newSemester.trim()}
-              className="p-2 bg-black dark:bg-white text-white dark:text-black rounded-md disabled:opacity-50"
+              className="p-2.5 bg-black dark:bg-white text-white dark:text-black rounded-xl disabled:opacity-50 transition-all duration-200 hover:bg-gray-800 dark:hover:bg-gray-200"
             >
               <Plus className="w-5 h-5" />
             </button>
@@ -239,10 +239,10 @@ export function CurriculumManager({ curriculumMap, onChange }: CurriculumManager
             {semesters.map(semester => (
               <div
                 key={semester}
-                className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-colors ${
+                className={`flex items-center justify-between p-3.5 rounded-xl border cursor-pointer transition-all duration-200 ${
                   selectedSemester === semester
-                    ? "border-black dark:border-white bg-gray-50 dark:bg-zinc-900"
-                    : "border-gray-200 dark:border-zinc-800 hover:border-gray-300 dark:hover:border-zinc-700"
+                    ? "border-black dark:border-white bg-gray-50 dark:bg-zinc-900/50 shadow-sm"
+                    : "border-gray-200 dark:border-zinc-800 hover:border-gray-300 dark:hover:border-zinc-700 hover:bg-gray-50/50 dark:hover:bg-zinc-900/30"
                 }`}
                 onClick={() => {
                   if (editingSemester !== semester) {

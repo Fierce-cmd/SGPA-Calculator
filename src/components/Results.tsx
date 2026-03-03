@@ -79,30 +79,30 @@ export function Results({ subjects, marks, rules }: ResultsProps) {
   return (
     <div className="space-y-8">
       {/* SGPA Card */}
-      <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-2xl shadow-xl overflow-hidden text-white dark:text-black relative">
-        <div className="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-24 h-24 bg-white opacity-10 rounded-full blur-xl"></div>
+      <div className="bg-black dark:bg-white rounded-3xl shadow-xl overflow-hidden text-white dark:text-black relative transition-all duration-200">
+        <div className="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-white/10 dark:bg-black/5 opacity-20 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-24 h-24 bg-white/10 dark:bg-black/5 opacity-20 rounded-full blur-xl"></div>
 
         <div className="p-8 sm:p-10 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="text-center md:text-left">
-            <h2 className="text-indigo-100 font-medium text-lg mb-1 uppercase tracking-wider">
+            <h2 className="text-gray-300 dark:text-gray-600 font-medium text-lg mb-1 uppercase tracking-wider">
               Expected SGPA
             </h2>
-            <div className="text-6xl sm:text-7xl font-bold tracking-tight">
+            <div className="text-7xl sm:text-8xl font-bold tracking-tighter">
               {sgpa}
             </div>
           </div>
 
           <div className="flex flex-row gap-8 sm:gap-12">
             <div className="text-center">
-              <div className="text-3xl font-semibold">{totalCredits}</div>
-              <div className="text-indigo-200 text-sm mt-1 uppercase tracking-wider font-medium">
+              <div className="text-4xl font-semibold tracking-tight">{totalCredits}</div>
+              <div className="text-gray-400 dark:text-gray-500 text-sm mt-1 uppercase tracking-wider font-medium">
                 Total Credits
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-semibold">{totalCreditPoints}</div>
-              <div className="text-indigo-200 text-sm mt-1 uppercase tracking-wider font-medium">
+              <div className="text-4xl font-semibold tracking-tight">{totalCreditPoints}</div>
+              <div className="text-gray-400 dark:text-gray-500 text-sm mt-1 uppercase tracking-wider font-medium">
                 Credit Points
               </div>
             </div>
@@ -111,21 +111,21 @@ export function Results({ subjects, marks, rules }: ResultsProps) {
       </div>
 
       {/* Results Table */}
-      <div className="bg-white dark:bg-black rounded-xl shadow-sm border border-gray-200 dark:border-zinc-800 overflow-hidden transition-colors">
-        <div className="px-6 py-5 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black/50 flex justify-between items-center">
+      <div className="bg-white dark:bg-black rounded-2xl shadow-sm border border-gray-200/80 dark:border-zinc-800/80 overflow-hidden transition-all duration-200 hover:shadow-md">
+        <div className="px-6 py-5 border-b border-gray-100 dark:border-zinc-800/50 bg-gray-50/50 dark:bg-zinc-900/10 flex justify-between items-center">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
             Subject Breakdown
           </h3>
           <button
             onClick={handleExport}
-            className="px-4 py-2 bg-white dark:bg-zinc-900 border border-gray-300 dark:border-zinc-800 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black dark:focus:ring-white transition-colors"
+            className="px-4 py-2 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black dark:focus:ring-white transition-all duration-200"
           >
             Export CSV
           </button>
         </div>
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200 dark:divide-zinc-800">
-            <thead className="bg-gray-50 dark:bg-zinc-900/50">
+          <table className="min-w-full divide-y divide-gray-100 dark:divide-zinc-800/50">
+            <thead className="bg-gray-50/80 dark:bg-zinc-900/30">
               <tr>
                 <th
                   scope="col"
