@@ -20,6 +20,9 @@ export function CurriculumManager({ curriculumMap, onChange }: CurriculumManager
   const [editingSemester, setEditingSemester] = useState<string | null>(null);
   const [editSemesterName, setEditSemesterName] = useState("");
 
+  const [confirmDeleteBranch, setConfirmDeleteBranch] = useState<string | null>(null);
+  const [confirmDeleteSemester, setConfirmDeleteSemester] = useState<string | null>(null);
+
   const branches = Object.keys(curriculumMap);
   const semesters = selectedBranch ? Object.keys(curriculumMap[selectedBranch] || {}) : [];
 
@@ -51,15 +54,14 @@ export function CurriculumManager({ curriculumMap, onChange }: CurriculumManager
   };
 
   const handleDeleteBranch = (branch: string) => {
-    if (confirm(`Are you sure you want to delete the branch "${branch}" and all its semesters?`)) {
-      const newMap = { ...curriculumMap };
-      delete newMap[branch];
-      onChange(newMap);
-      if (selectedBranch === branch) {
-        setSelectedBranch("");
-        setSelectedSemester("");
-      }
+    const newMap = { ...curriculumMap };
+    delete newMap[branch];
+    onChange(newMap);
+    if (selectedBranch === branch) {
+      setSelectedBranch("");
+      setSelectedSemester("");
     }
+    setConfirmDeleteBranch(null);
   };
 
   // Semester Operations
@@ -94,15 +96,14 @@ export function CurriculumManager({ curriculumMap, onChange }: CurriculumManager
 
   const handleDeleteSemester = (semester: string) => {
     if (!selectedBranch) return;
-    if (confirm(`Are you sure you want to delete semester "${semester}"?`)) {
-      const newMap = { ...curriculumMap };
-      newMap[selectedBranch] = { ...newMap[selectedBranch] };
-      delete newMap[selectedBranch][semester];
-      onChange(newMap);
-      if (selectedSemester === semester) {
-        setSelectedSemester("");
-      }
+    const newMap = { ...curriculumMap };
+    newMap[selectedBranch] = { ...newMap[selectedBranch] };
+    delete newMap[selectedBranch][semester];
+    onChange(newMap);
+    if (selectedSemester === semester) {
+      setSelectedSemester("");
     }
+    setConfirmDeleteSemester(null);
   };
 
   // Subject Operations
@@ -178,6 +179,27 @@ export function CurriculumManager({ curriculumMap, onChange }: CurriculumManager
                       <X className="w-4 h-4" />
                     </button>
                   </div>
+                ) : confirmDeleteBranch === branch ? (
+                  <div className="flex items-center gap-1" onClick={e => e.stopPropagation()}>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteBranch(branch);
+                      }}
+                      className="px-2 py-1 text-xs font-medium bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setConfirmDeleteBranch(null);
+                      }}
+                      className="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-zinc-700 text-gray-800 dark:text-gray-200 rounded hover:bg-gray-300 dark:hover:bg-zinc-600 transition-colors"
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 ) : (
                   <>
                     <span className="font-medium text-gray-900 dark:text-gray-100">{branch}</span>
@@ -195,7 +217,7 @@ export function CurriculumManager({ curriculumMap, onChange }: CurriculumManager
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          handleDeleteBranch(branch);
+                          setConfirmDeleteBranch(branch);
                         }}
                         className="p-1.5 text-gray-400 hover:text-red-600 rounded"
                       >
@@ -266,6 +288,27 @@ export function CurriculumManager({ curriculumMap, onChange }: CurriculumManager
                       <X className="w-4 h-4" />
                     </button>
                   </div>
+                ) : confirmDeleteSemester === semester ? (
+                  <div className="flex items-center gap-1" onClick={e => e.stopPropagation()}>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteSemester(semester);
+                      }}
+                      className="px-2 py-1 text-xs font-medium bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setConfirmDeleteSemester(null);
+                      }}
+                      className="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-zinc-700 text-gray-800 dark:text-gray-200 rounded hover:bg-gray-300 dark:hover:bg-zinc-600 transition-colors"
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 ) : (
                   <>
                     <span className="font-medium text-gray-900 dark:text-gray-100">Semester {semester}</span>
@@ -283,7 +326,7 @@ export function CurriculumManager({ curriculumMap, onChange }: CurriculumManager
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          handleDeleteSemester(semester);
+                          setConfirmDeleteSemester(semester);
                         }}
                         className="p-1.5 text-gray-400 hover:text-red-600 rounded"
                       >
